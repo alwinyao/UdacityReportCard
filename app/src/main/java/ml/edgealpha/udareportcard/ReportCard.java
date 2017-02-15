@@ -14,17 +14,11 @@ public class ReportCard {
     // Integer value of student ID
     private int mStudentId;
 
-    // String value of teacher name
-    private String mTeacherName;
-
     // String value of course name
     private String mCourseName;
 
     // Double value of student score
     private double mStudentScore;
-
-    // String value of student grade
-    private String mStudentGrade;
 
     // Integer value of semester, e.g., 1 for semester one; 2 for semester two; 3 for semester three
     private int mSemester;
@@ -33,11 +27,10 @@ public class ReportCard {
      * Constructs a new ReportCard with initial values for course name, teacher name, and semester.
      */
     public ReportCard(String studentFirstName, String studentLastName, int studentId,
-                      String teacherName, String courseName, double studentScore, int semester) {
+                      String courseName, double studentScore, int semester) {
         studentFirstName = mStudentFirstName;
         studentLastName = mStudentLastName;
         studentId = mStudentId;
-        teacherName = mTeacherName;
         courseName = mCourseName;
         studentScore = mStudentScore;
         semester = mSemester;
@@ -50,17 +43,46 @@ public class ReportCard {
      * @param studentLastName  is the updated string of student last name.
      */
     public void setStudentName(String studentFirstName, String studentLastName) {
-        studentFirstName = mStudentFirstName;
-        studentLastName = mStudentLastName;
+        mStudentFirstName = studentFirstName;
+        mStudentLastName = studentLastName;
+    }
+
+    // Gets string of student first name
+    public String getStudentFirstName() {
+        return mStudentFirstName;
+    }
+
+    // Gets string of student last name
+    public String getStudentLastName() {
+        return mStudentLastName;
     }
 
     /**
-     * Sets the string value for student ID.
+     * Sets the integer value for student ID.
      *
      * @param studentId is the updated integer of student ID.
      */
     public void setStudentId(int studentId) {
-        studentId = mStudentId;
+        mStudentId = studentId;
+    }
+
+    // Gets integer value of student ID
+    public int getStudentId() {
+        return mStudentId;
+    }
+
+    /**
+     * Sets the string of course name.
+     *
+     * @param courseName text.
+     */
+    public void setCourseName(String courseName) {
+        mCourseName = courseName;
+    }
+
+    // Gets string of course name
+    public String getCourseName() {
+        return mCourseName;
     }
 
     /**
@@ -78,61 +100,33 @@ public class ReportCard {
         }
     }
 
-    /**
-     * Gets the string value of course name.
-     *
-     * @return mCourseName text.
-     */
-    public String getCourseName() {
-        return mCourseName;
+    // Gets double value of student score
+    public double getStudentScore() {
+        return mStudentScore;
     }
 
     /**
-     * Gets the integer value of semester.
+     * Sets the integer value for semester.
      *
-     * @return mSemester integer.
+     * @param semester is the updated integer of semester, e.g. 1 for semester 1, 2 for semester 2.
      */
+    public void setSemester(int semester) {
+        mSemester = semester;
+    }
+
+    // Gets integer value of semester
     public int getSemester() {
         return mSemester;
     }
 
-    /**
-     * Gets the string value of teacher name.
-     *
-     * @return mTeacherName text.
-     */
-    public String getTeacherName() {
-        return mTeacherName;
-    }
-
-    // Convert student score to relative student grade
-    public String gradeStudent() {
-        if (mStudentScore < 50.0) {
-            mStudentGrade = "F";
-        } else if (mStudentScore >= 50.0 && mStudentScore < 60.0) {
-            mStudentGrade = "E";
-        } else if (mStudentScore >= 60.0 && mStudentScore < 70.0) {
-            mStudentGrade = "D";
-        } else if (mStudentScore >= 70.0 && mStudentScore < 80.0) {
-            mStudentGrade = "C";
-        } else if (mStudentScore >= 80.0 && mStudentScore < 90.0) {
-            mStudentGrade = "B";
-        } else {
-            mStudentGrade = "A";
-        }
-        return mStudentGrade;
-    }
-
-    // Convert values to string to show student grade
+    // Convert values to string to show the score of student
     @Override
     public String toString() {
         return "Result: " +
                 "\nStudent: " + mStudentFirstName + " " + mStudentLastName +
                 "\nStudent ID: " + mStudentId +
-                "\nTeacher: " + mTeacherName +
                 "\nSemester: " + mSemester +
                 "\nCourse: " + mCourseName +
-                "\nScore: " + mStudentScore +
-                "\nGrade: " + mStudentGrade;
+                "\nScore: " + mStudentScore;
     }
 }
